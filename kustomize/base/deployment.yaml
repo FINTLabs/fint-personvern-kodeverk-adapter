@@ -4,9 +4,6 @@ metadata:
   name: fint-personvern-kodeverk-adapter
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: fint-personvern-kodeverk-adapter
   strategy:
     type: Recreate
   template:
