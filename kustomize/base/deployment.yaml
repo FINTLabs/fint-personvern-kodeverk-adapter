@@ -4,6 +4,9 @@ metadata:
   name: fint-personvern-kodeverk-adapter
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: fint-personvern-kodeverk-adapter
   strategy:
     type: Recreate
   template:
@@ -14,17 +17,15 @@ spec:
           name: fint-personvern-kodeverk-adapter
           resources:
             limits:
-              memory: "1Gi"
-              cpu: "1"
+              memory: "512Mi"
+              cpu: "500m"
             requests:
-              memory: "1Gi"
+              memory: "256Mi"
               cpu: "250m"
           ports:
             - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: fint-personvern-kodeverk-adapter
-            - secretRef:
-                name: fint-personvern-kodeverk-adapter-pg
             - secretRef:
                 name: fint-personvern-kodeverk-adapter
