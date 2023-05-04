@@ -15,6 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +25,12 @@ import java.util.stream.Collectors;
 @Service
 public class PersonopplysningRestTemplate {
 
+    @Value("${spring.security.oauth2.client.registration.fint.client-id}")
+    public String clientId;
+
+    @Value("${spring.security.oauth2.client.registration.fint.client-secret}")
+    public String clientSecret;
+
     private final RestTemplate restTemplate;
     private List<PersonopplysningResource> personopplysningResources;
 
@@ -31,8 +38,8 @@ public class PersonopplysningRestTemplate {
     private String metamodellUri;
 
 
-    public PersonopplysningRestTemplate(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public PersonopplysningRestTemplate() {
+        this.restTemplate = new RestTemplate();
         this.personopplysningResources = new ArrayList<>();
     }
 
@@ -41,6 +48,11 @@ public class PersonopplysningRestTemplate {
             updatePersonopplysningResources();
         }
         return personopplysningResources;
+    }
+
+    @PostConstruct
+    private void test() {
+        log.info("ClientId: {} \nClientSecret: {}", clientId, clientSecret);
     }
 
     @Scheduled(initialDelay = 1000L, fixedDelay = 3600000L)
