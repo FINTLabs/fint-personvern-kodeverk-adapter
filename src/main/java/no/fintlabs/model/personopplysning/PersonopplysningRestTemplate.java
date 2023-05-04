@@ -25,12 +25,6 @@ import java.util.stream.Collectors;
 @Service
 public class PersonopplysningRestTemplate {
 
-    @Value("${spring.security.oauth2.client.registration.fint.client-id}")
-    public String clientId;
-
-    @Value("${spring.security.oauth2.client.registration.fint.client-secret}")
-    public String clientSecret;
-
     private final RestTemplate restTemplate;
     private List<PersonopplysningResource> personopplysningResources;
 
@@ -48,11 +42,6 @@ public class PersonopplysningRestTemplate {
             updatePersonopplysningResources();
         }
         return personopplysningResources;
-    }
-
-    @PostConstruct
-    private void test() {
-        log.info("ClientId: {} \nClientSecret: {}", clientId, clientSecret);
     }
 
     @Scheduled(initialDelay = 1000L, fixedDelay = 3600000L)
