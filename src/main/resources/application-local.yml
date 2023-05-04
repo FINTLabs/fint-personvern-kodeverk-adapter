@@ -1,4 +1,5 @@
 fint:
+  metamodell: https://beta.felleskomponent.no/fint/metamodell/klasse
   adapter:
     id: https://vigoiks.no/fintlabs-no/personvern/kodeverk-henrik-test
     password:
@@ -36,22 +37,3 @@ spring:
             client-secret:
             provider: fint-idp
             scope: fint-adapter
-
-  datasource:
-    hikari:
-      schema: public
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5436/fint_personvern_adapter
-    username: postgres
-    password: password
-  jpa:
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non_contextual_creation: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
-    datasource:
-      driver-class-name: org.postgresql.Driver
