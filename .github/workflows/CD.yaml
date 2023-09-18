@@ -54,8 +54,8 @@ jobs:
       matrix:
         org:
           - fintlabs-no
-          - rogfk-no
-          - viken-no
+#          - rogfk-no
+#          - viken-no
 #          - visma-com
         cluster:
 #          - aks-alpha-fint-2021-11-18
