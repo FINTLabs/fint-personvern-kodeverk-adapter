@@ -7,7 +7,7 @@ patchesStrategicMerge:
   - config-map.yaml
   - one-password.yaml
 commonLabels:
-  app.kubernetes.io/name: fint-personvern-kodeverk-adapter-db
+  app.kubernetes.io/name: fint-personvern-kodeverk-adapter
   app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs-no
   app.kubernetes.io/version: latest
   app.kubernetes.io/component: backend
