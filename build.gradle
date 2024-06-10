@@ -44,6 +44,12 @@ dependencies {
     implementation 'no.fint:fint-model-resource:0.4.1'
     implementation 'no.fintlabs:fint-metamodell-model-java:1.1.0'
 
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    //org.springframework.data.jpa
+
+    implementation 'org.springframework.data:spring-data-commons'
+
     runtimeOnly 'org.springframework.boot:spring-boot-actuator'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
