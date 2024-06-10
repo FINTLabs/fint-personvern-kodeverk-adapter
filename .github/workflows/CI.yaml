@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: CT-1305
+    branches:
+    - CT-1305
 
 jobs:
   build:
