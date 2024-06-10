@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fint-personvern-kodeverk-adapter
+  name: fint-personvern-kodeverk-adapter-db
 spec:
   replicas: 1
   strategy:
