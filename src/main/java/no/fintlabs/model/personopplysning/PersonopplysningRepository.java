@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.adapter.events.WriteableResourceRepository;
 import no.fintlabs.adapter.models.RequestFintEvent;
+import no.fintlabs.model.personopplysning.model.PersonopplysningEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -13,15 +14,16 @@ import java.util.List;
 @Repository
 public class PersonopplysningRepository implements WriteableResourceRepository<PersonopplysningResource> {
 
-    private final PersonopplysningRestTemplate personopplysningRestTemplate;
+    private final PersonopplysningJpaRepository personopplysningJpaRepository;
 
-    public PersonopplysningRepository(PersonopplysningRestTemplate personopplysningRestTemplate) {
-        this.personopplysningRestTemplate = personopplysningRestTemplate;
+    public PersonopplysningRepository(PersonopplysningJpaRepository personopplysningJpaRepository) {
+        this.personopplysningJpaRepository = personopplysningJpaRepository;
     }
 
     @Override
     public List<PersonopplysningResource> getResources() {
-        return personopplysningRestTemplate.getPersonopplysningResources();
+//        return personopplysningJpaRepository.findAll().stream().map(PersonopplysningEntity::toResource).toList();
+        return null;
     }
 
     @Override
@@ -31,6 +33,10 @@ public class PersonopplysningRepository implements WriteableResourceRepository<P
 
     @Override
     public PersonopplysningResource saveResources(PersonopplysningResource personopplysningResource, RequestFintEvent requestFintEvent) {
-        return null;
+//        PersonopplysningEntity entity = PersonopplysningEntity.toEntity(personopplysningResource);
+//        personopplysningJpaRepository.save(entity);
+        log.info("personopplysning: {} ", personopplysningResource.getNavn());
+        return personopplysningResource;
+
     }
 }
