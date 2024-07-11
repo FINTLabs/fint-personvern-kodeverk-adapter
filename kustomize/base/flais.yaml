@@ -1,11 +1,11 @@
 apiVersion: fintlabs.no/v1alpha1
 kind: Application
 metadata:
-  name: fint-adapter-personvern-kodeverk
+  name: fint-personvern-kodeverk-adapter
   namespace: fintlabs-no
   labels:
-    app.kubernetes.io/name: fint-adapter-personvern-kodeverk
-    app.kubernetes.io/instance: fint-adapter-personvern-kodeverk_fintlabs_no
+    app.kubernetes.io/name: fint-personvern-kodeverk-adapter
+    app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
     app.kubernetes.io/version: latest
     app.kubernetes.io/component: adapter
     app.kubernetes.io/part-of: fint-core
@@ -14,12 +14,12 @@ metadata:
 spec:
   port: 8080
   orgId: fintlabs.no
-  image: ghcr.io/fintlabs/fint-adapter-personvern-kodeverk:latest
+  image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter:latest
   imagePullPolicy: Always
   onePassword:
     itemPath: aks-api-vault/fint-personvern-kodeverk-adapter
   database:
-    database: fint-adapter-personvern-kodeverk
+    database: fint-personvern-kodeverk-adapter
   resources:
     limits:
       memory: 512Mi

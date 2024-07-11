@@ -4,8 +4,8 @@ namespace: fintlabs-no
 resources:
   - ../../../base
 commonLabels:
-  app.kubernetes.io/name: fint-adapter-personvern-kodeverk
-  app.kubernetes.io/instance: fint-adapter-personvern-kodeverk_fintlabs_no
+  app.kubernetes.io/name: fint-personvern-kodeverk-adapter
+  app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
   app.kubernetes.io/version: latest
   app.kubernetes.io/component: adapter
   app.kubernetes.io/part-of: fint-core
@@ -15,10 +15,10 @@ patches:
   - patch: |-
       - op: replace
         path: "/metadata/labels/app.kubernetes.io~1instance"
-        value: "fint-adapter-personvern-kodeverk_fintlabs_no"
+        value: "fint-personvern-kodeverk-adapter_fintlabs_no"
       - op: replace
         path: "/spec/orgId"
         value: "fintlabs.no"
     target:
       kind: Application
-      name: fint-adapter-personvern-kodeverk
+      name: fint-personvern-kodeverk-adapter
