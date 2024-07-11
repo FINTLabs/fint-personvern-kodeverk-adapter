@@ -24,4 +24,4 @@ patches:
         value: "vaults/aks-beta-vault/items/fint-personvern-kodeverk-adapter"
     target:
       kind: Application
-      name: fint-personvern-kodeverk-adapter
+      name: fint-personvern-kodeverk-adapter-db
