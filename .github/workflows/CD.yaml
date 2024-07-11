@@ -1,9 +1,8 @@
 name: CD
 
 on:
-  push:
-    branches:
-      - CT-1305
+  repository_dispatch:
+    types: [trigger-cd]
 
 env:
   REGISTRY: ghcr.io
@@ -57,14 +56,14 @@ jobs:
       matrix:
         org:
           - fintlabs-no
-#          - rogfk-no
-#          - viken-no
-#          - visma-com
+        #          - rogfk-no
+        #          - viken-no
+        #          - visma-com
         cluster:
-#          - aks-alpha-fint-2021-11-18
+          #          - aks-alpha-fint-2021-11-18
           - aks-beta-fint-2021-11-23
-#          - aks-api-fint-2022-02-08
-#          - aks-pwf-fint-2021-10-20
+          - aks-api-fint-2022-02-08
+    #          - aks-pwf-fint-2021-10-20
 
     steps:
       - name: Checkout repository
