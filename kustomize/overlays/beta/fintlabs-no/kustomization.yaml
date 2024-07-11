@@ -19,6 +19,9 @@ patches:
       - op: replace
         path: "/spec/orgId"
         value: "fintlabs.no"
+      - op: replace
+        path: "/spec/onePassword/itemPath"
+        value: "vaults/aks-beta-vault/items/fint-personvern-kodeverk-adapter"
     target:
       kind: Application
       name: fint-personvern-kodeverk-adapter
