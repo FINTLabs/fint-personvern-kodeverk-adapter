@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.adapter.config.AdapterProperties;
 import no.fintlabs.adapter.events.EventPublisher;
+import no.fintlabs.adapter.models.OperationType;
 import no.fintlabs.adapter.models.RequestFintEvent;
 import no.fintlabs.adapter.models.ResponseFintEvent;
 import no.fintlabs.adapter.models.SyncPageEntry;
@@ -27,7 +28,7 @@ public class PersonopplysningEventPublisher extends EventPublisher<Personopplysn
     }
 
     @Override
-    @Scheduled(initialDelay = 5000, fixedDelay = 50000)
+    @Scheduled(initialDelay = 5000, fixedDelay = 5000)
     public void doCheckForNewEvents() {
         checkForNewEvents();
     }
@@ -35,19 +36,22 @@ public class PersonopplysningEventPublisher extends EventPublisher<Personopplysn
     @Override
     protected void handleEvent(RequestFintEvent requestFintEvent, PersonopplysningResource personopplysningResource) {
         ResponseFintEvent<PersonopplysningResource> response = createResponse(requestFintEvent);
-        if (response.getValue() == null) {
-            log.error("this bitch empty");
-        } else if (personopplysningResourceValidator.isResourceValid(response.getValue().getResource())) {
+        response.setOperationType(OperationType.CREATE);
+        response.setValue(createSyncpageEntry(personopplysningResource));
+        if (personopplysningResourceValidator.isResourceValid(personopplysningResource)) {
             PersonopplysningResource savedResource = repository.saveResources(response.getValue().getResource(), requestFintEvent);
             response.setValue(createSyncpageEntry(savedResource));
+            submit(response);
         } else {
             response.setFailed(true);
             response.setErrorMessage("Failed to handle event");
+            submit(response);
         }
-        submit(response);
+        log.info(response.getCorrId());
     }
 
     private SyncPageEntry<PersonopplysningResource> createSyncpageEntry(PersonopplysningResource savedResource) {
         return SyncPageEntry.of(savedResource.getSystemId().getIdentifikatorverdi(), savedResource);
     }
+
 }
