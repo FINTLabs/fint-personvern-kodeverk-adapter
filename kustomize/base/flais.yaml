@@ -19,7 +19,7 @@ spec:
   onePassword:
     itemPath: vaults/aks-api-vault/items/fint-personvern-kodeverk-adapter
   database:
-    enabled: true
+    database: fint-core
   resources:
     limits:
       memory: 512Mi
