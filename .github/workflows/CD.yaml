@@ -1,8 +1,11 @@
 name: CD
 
 on:
-  repository_dispatch:
-    types: [trigger-cd]
+  push:
+    branches:
+      - CT-1305
+#  repository_dispatch:
+#    types: [trigger-cd]
 
 env:
   REGISTRY: ghcr.io
