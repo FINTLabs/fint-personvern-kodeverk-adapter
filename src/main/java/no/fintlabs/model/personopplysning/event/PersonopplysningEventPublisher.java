@@ -28,7 +28,7 @@ public class PersonopplysningEventPublisher extends EventPublisher<Personopplysn
     }
 
     @Override
-    @Scheduled(initialDelay = 5000, fixedDelay = 5000)
+    @Scheduled(initialDelay = 5000, fixedDelay = 50000)
     public void doCheckForNewEvents() {
         checkForNewEvents();
     }
