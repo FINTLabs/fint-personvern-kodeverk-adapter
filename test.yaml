@@ -1,36 +1,36 @@
 apiVersion: fintlabs.no/v1alpha1
 kind: Application
 metadata:
-  name: fint-personvern-kodeverk-adapter-db
-  namespace: fintlabs-no
   labels:
-    app.kubernetes.io/name: fint-personvern-kodeverk-adapter-db
-    app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
-    app.kubernetes.io/version: latest
     app.kubernetes.io/component: adapter
+    app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
+    app.kubernetes.io/name: fint-personvern-kodeverk-adapter-db
     app.kubernetes.io/part-of: fint-core
-    fintlabs.no/team: core
+    app.kubernetes.io/version: latest
     fintlabs.no/org-id: fintlabs.no
+    fintlabs.no/team: core
+  name: fint-personvern-kodeverk-adapter
+  namespace: fintlabs-no
 spec:
-  port: 8080
-  orgId: fintlabs.no
+  database:
+    database: fint-personvern-kodeverk-adapter
   image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter:latest
   imagePullPolicy: Always
   onePassword:
     itemPath: vaults/aks-api-vault/items/fint-personvern-kodeverk-adapter
-  database:
-    database: fint-personvern-kodeverk-adapter
+  orgId: fintlabs.no
+  port: 8080
+  replicas: 1
   resources:
     limits:
-      memory: 512Mi
       cpu: 500m
+      memory: 512Mi
     requests:
-      memory: 256Mi
       cpu: 250m
+      memory: 256Mi
   restartPolicy: Always
-  replicas: 1
   strategy:
-    type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
+    type: RollingUpdate

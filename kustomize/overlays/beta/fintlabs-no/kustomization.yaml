@@ -4,7 +4,7 @@ namespace: fintlabs-no
 resources:
   - ../../../base
 commonLabels:
-  app.kubernetes.io/name: fint-personvern-kodeverk-adapter-db
+  app.kubernetes.io/name: fint-personvern-kodeverk-adapter
   app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
   app.kubernetes.io/version: latest
   app.kubernetes.io/component: adapter
@@ -24,4 +24,4 @@ patches:
         value: "vaults/aks-beta-vault/items/fint-personvern-kodeverk-adapter"
     target:
       kind: Application
-      name: fint-personvern-kodeverk-adapter-db
+      name: fint-personvern-kodeverk-adapter
