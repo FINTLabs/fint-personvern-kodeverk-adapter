@@ -1,0 +1,9 @@
+name: workflows
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  call-workflow-using-branch:
+    uses: fintlabs/fint-core-workflows/.github/workflows/CD.yaml@main
