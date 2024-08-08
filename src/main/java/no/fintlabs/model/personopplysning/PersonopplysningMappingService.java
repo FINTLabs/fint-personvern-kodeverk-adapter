@@ -1,6 +1,5 @@
 package no.fintlabs.model.personopplysning;
 
-import lombok.extern.slf4j.Slf4j;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
 import no.fint.model.felles.kompleksedatatyper.Periode;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.UUID;
 
+@Service
 public class PersonopplysningMappingService {
 
 
