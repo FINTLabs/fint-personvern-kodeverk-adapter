@@ -3,7 +3,6 @@ name: CD
 on:
   push:
     branches:
-      - CT-1305
 #  repository_dispatch:
 #    types: [trigger-cd]
 
@@ -63,9 +62,9 @@ jobs:
         #          - viken-no
         #          - visma-com
         cluster:
-#          - aks-alpha-fint-2021-11-18
+          - aks-api-fint-2022-02-08
           - aks-beta-fint-2021-11-23
-#          - aks-api-fint-2022-02-08
+#          - aks-alpha-fint-2021-11-18
 #          - aks-pwf-fint-2021-10-20
 
     steps:
