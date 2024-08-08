@@ -2,8 +2,8 @@ fint:
   metamodell: https://beta.felleskomponent.no/fint/metamodell/klasse
   adapter:
     id: https://vigoiks.no/fintlabs-no/personvern/kodeverk-henrik-test
-    password:
-    username:
+    password: ${fint.adapter.password}
+    username: ${fint.adapter.username}
     base-url: 'https://beta.felleskomponent.no'
     registration-id: fint
     org-id: fintlabs.no
@@ -23,6 +23,12 @@ fint:
         deltaSyncInterval: IMMEDIATE
 
 spring:
+  datasource:
+    hikari:
+      schema: fintlabs_no
+    url: jdbc:postgresql://localhost:5436/fint-personvern-kodeverk-adapter
+    username: postgres
+    password: password
   security:
     oauth2:
       client:
@@ -32,7 +38,9 @@ spring:
         registration:
           fint:
             authorization-grant-type: password
-            client-id:
-            client-secret:
+            client-id: ${fint.adapter.clientId}
+            client-secret: ${fint.adapter.client-secret}
             provider: fint-idp
             scope: fint-adapter
+server:
+  port: 8084
