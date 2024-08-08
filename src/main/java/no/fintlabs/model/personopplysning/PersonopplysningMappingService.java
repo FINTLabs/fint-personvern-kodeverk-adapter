@@ -20,7 +20,7 @@ public class PersonopplysningMappingService {
         identifikator.setIdentifikatorverdi(personopplysning.getIdentifikatorVerdi());
         personopplysningResource.setKode(personopplysning.getKode());
         personopplysningResource.setNavn(personopplysning.getNavn());
-        personopplysningResource.setPassiv(personopplysning.getPassiv());
+        personopplysningResource.setPassiv(personopplysning.isPassiv());
         personopplysningResource.setGyldighetsperiode(mapToPeriode(personopplysning.getStartGyldighetsdato(), personopplysning.getEndGyldighetsdato(), personopplysning.getBeskrivelseGyldighetsPeriode()));
         personopplysningResource.setSystemId(identifikator);
         return personopplysningResource;

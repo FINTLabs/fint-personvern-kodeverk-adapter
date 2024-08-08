@@ -25,8 +25,11 @@ public class Personopplysning {
     @Column(nullable = false)
     private String navn;
 
-    private Boolean passiv;
+    private boolean passiv;
 
     private String identifikatorVerdi;
 
+    private Date startIdentifikatorDato;
+
+    private Date endIdentifikatorDato;
 }
