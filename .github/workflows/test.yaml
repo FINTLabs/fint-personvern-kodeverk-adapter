@@ -1,0 +1,4 @@
+name: workflows
+
+jobs:
+  uses: FINTlabs/fint-core-workflows/.github/workflows/CD.yaml@main
