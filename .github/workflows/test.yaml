@@ -20,4 +20,4 @@ jobs:
       org: 'fintlabs-no'
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      AKS_<env>_FINT_GITHUB: ${{ secrets.AKS_<aks-beta-fint-2021-11-23>_FINT_GITHUB }}
+      AKS_<env>_FINT_GITHUB: "${{ secrets[format('AKS_{0}_FINT_GITHUB', steps.environment.outputs.result)] }}"
