@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 
-
 @Slf4j
 @Service
 public class PersonopplysningPublisher extends ResourcePublisher<PersonopplysningResource, ResourceRepository<PersonopplysningResource>> {
