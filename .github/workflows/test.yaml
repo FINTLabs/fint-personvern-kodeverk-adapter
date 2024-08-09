@@ -1,4 +1,23 @@
-name: workflows
+name: Workflow
+
+on:
+  push:
+    branches:
+      - workflows
 
 jobs:
-  uses: FINTlabs/fint-core-workflows/.github/workflows/CD.yaml@main
+  build:
+    uses: FINTlabs/fint-core-workflows/.github/workflows/CI.yaml@main
+    with:
+      javaVersion: '17'
+
+  deploy:
+    uses: FINTlabs/fint-core-workflows/.github/workflows/CD.yaml@main
+    needs: build
+    with:
+      branch-name: 'workflows'
+      cluster: 'aks-beta-fint-2021-11-23'
+      org: 'fintlabs-no'
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      AKS_<env>_FINT_GITHUB: ${{ secrets.AKS_<env>_FINT_GITHUB }}
