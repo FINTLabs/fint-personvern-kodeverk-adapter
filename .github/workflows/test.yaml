@@ -25,4 +25,4 @@ jobs:
     secrets:
       AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB: ${{ secrets.AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB }}
       actor: ${{github.actor}}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN_docker: ${{ secrets.GITHUB_TOKEN }}
