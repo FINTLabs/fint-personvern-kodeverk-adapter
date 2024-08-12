@@ -10,6 +10,10 @@ jobs:
     uses: FINTlabs/fint-core-workflows/.github/workflows/CI.yaml@main
     with:
       javaVersion: '17'
+    secrets:
+      GITHUBACTION_TOKEN: ${{secrets.GITHUBACTION_TOKEN}}
+
+
 
   deploy:
     uses: FINTlabs/fint-core-workflows/.github/workflows/CD.yaml@main
