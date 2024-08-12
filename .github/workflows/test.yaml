@@ -25,4 +25,5 @@ jobs:
     secrets:
       AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB: ${{ secrets.AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB }}
       docker_username: ${{github.actor}}
-      docker_password: ${{ secrets.GITHUB_TOKEN }}
+      docker_password: ${{secrets.GITHUB_TOKEN}}
+      registry: ${{env.REGISTRY}}
