@@ -5,9 +5,6 @@ on:
     branches:
       - workflows
 
-env:
-  registry: ${{env.REGISTRY}}
-
 jobs:
   build:
     uses: FINTlabs/fint-core-workflows/.github/workflows/CI.yaml@main
@@ -29,4 +26,4 @@ jobs:
       AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB: ${{ secrets.AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB }}
       docker_username: ${{github.actor}}
       docker_password: ${{secrets.GITHUB_TOKEN}}
-      registry: registry
+
