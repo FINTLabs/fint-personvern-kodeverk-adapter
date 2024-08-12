@@ -25,3 +25,4 @@ jobs:
     secrets:
       TOKEN: ${{ secrets.GITHUB_TOKEN }}
       AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB: ${{ secrets.AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB }}
+      docker_username: ${{github.actor}}
