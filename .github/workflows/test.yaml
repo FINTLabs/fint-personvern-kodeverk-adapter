@@ -22,8 +22,8 @@ jobs:
       branch-name: 'workflows'
       cluster: 'aks-beta-fint-2021-11-23'
       org: 'fintlabs-no'
+      registry: 'fintlabsacr'
     secrets:
       AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB: ${{ secrets.AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB }}
       docker_username: ${{github.actor}}
       docker_password: ${{secrets.GITHUB_TOKEN}}
-      registry: 'fintlabsacr'
