@@ -23,6 +23,7 @@ jobs:
       cluster: 'aks-beta-fint-2021-11-23'
       org: 'fintlabs-no'
       registry: 'ghcr.io'
+      IMAGE_NAME: 'fint-personvern-kodeverk-adapter'
     secrets:
       AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB: ${{ secrets.AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB }}
       docker_username: ${{github.actor}}
