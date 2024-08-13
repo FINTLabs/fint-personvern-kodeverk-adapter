@@ -22,7 +22,7 @@ jobs:
       branch-name: 'workflows'
       cluster: 'aks-beta-fint-2021-11-23'
       org: 'fintlabs-no'
-      registry: 'fintlabsacr.azurecr.io/fint-personvern-kodeverk-adapter'
+      registry: 'ghcr.io'
     secrets:
       AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB: ${{ secrets.AKS_AKS_BETA_FINT_2021_11_23_FINT_GITHUB }}
       docker_username: ${{github.actor}}
