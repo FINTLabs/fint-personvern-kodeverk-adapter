@@ -15,17 +15,15 @@ public class PersonopplysningRepository implements WriteableResourceRepository<P
 
     private PersonopplysningJpaRepository personopplysningJpaRepository;
 
-    private PersonopplysningMappingService personopplysningMappingService;
 
     public PersonopplysningRepository(PersonopplysningJpaRepository personopplysningJpaRepository, PersonopplysningMappingService personopplysningMappingService) {
         this.personopplysningJpaRepository = personopplysningJpaRepository;
-        this.personopplysningMappingService = personopplysningMappingService;
     }
 
     @Override
     public List<PersonopplysningResource> getResources() {
         return personopplysningJpaRepository.findAll().stream()
-                .map(e -> personopplysningMappingService.toResource(e))
+                .map(PersonopplysningMappingService::toResource)
                 .toList();
     }
 
