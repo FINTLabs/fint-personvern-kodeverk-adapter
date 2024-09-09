@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class PersonopplysningResourceValidator {
 
     public boolean isResourceValid(PersonopplysningResource personopplysningResource) {
+        if (personopplysningResource.getKode() != null) return false;
         return true;
     }
 }
