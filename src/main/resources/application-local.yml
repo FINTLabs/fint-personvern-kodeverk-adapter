@@ -25,7 +25,7 @@ fint:
 spring:
   datasource:
     hikari:
-      schema: fintlabs_no
+      schema: public
     url: jdbc:postgresql://localhost:5436/fint-personvern-kodeverk-adapter
     username: postgres
     password: password
@@ -38,7 +38,7 @@ spring:
         registration:
           fint:
             authorization-grant-type: password
-            client-id: ${fint.adapter.clientId}
+            client-id: ${fint.adapter.client-id}
             client-secret: ${fint.adapter.client-secret}
             provider: fint-idp
             scope: fint-adapter
