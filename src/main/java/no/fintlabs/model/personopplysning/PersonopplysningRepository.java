@@ -16,7 +16,7 @@ public class PersonopplysningRepository implements WriteableResourceRepository<P
     private PersonopplysningJpaRepository personopplysningJpaRepository;
 
 
-    public PersonopplysningRepository(PersonopplysningJpaRepository personopplysningJpaRepository, PersonopplysningMappingService personopplysningMappingService) {
+    public PersonopplysningRepository(PersonopplysningJpaRepository personopplysningJpaRepository) {
         this.personopplysningJpaRepository = personopplysningJpaRepository;
     }
 
