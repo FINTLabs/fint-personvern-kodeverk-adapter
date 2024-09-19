@@ -32,7 +32,7 @@ public class PersonopplysningMappingService {
         personopplysning.setBeskrivelseGyldighetsPeriode(personopplysningResource.getGyldighetsperiode().getBeskrivelse());
         personopplysning.setNavn(personopplysningResource.getNavn());
         personopplysning.setPassiv(personopplysningResource.getPassiv());
-        personopplysning.setIdentifikatorVerdi(UUID.randomUUID().toString());
+        personopplysning.setIdentifikatorVerdi(personopplysning.getIdentifikatorVerdi());
         return personopplysning;
     }
 
