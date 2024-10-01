@@ -36,8 +36,7 @@ public class PersonopplysningRepository implements WriteableResourceRepository<P
     public PersonopplysningResource saveResources(PersonopplysningResource personopplysningResource, RequestFintEvent requestFintEvent) {
         Personopplysning personopplysning = PersonopplysningMappingService.toEntity(personopplysningResource);
         log.info("Save personopplysning {}", personopplysningResource.getNavn());
-        personopplysningJpaRepository.save(personopplysning);
-        return personopplysningResource;
+        return PersonopplysningMappingService.toResource(personopplysningJpaRepository.save(personopplysning));
     }
 
 }
