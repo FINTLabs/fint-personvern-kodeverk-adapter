@@ -26,7 +26,7 @@ public class PersonopplysningPublisher extends ResourcePublisher<Personopplysnin
         submit(SyncData.ofPostData(repository.getResources()));
     }
 
-    // Not in useﬁ
+    // Not in use
     @Override
     public void doDeltaSync() {
         log.info("Start delta sync for resource {}", getCapability().getEntityUri());
