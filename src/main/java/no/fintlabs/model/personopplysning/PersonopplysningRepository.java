@@ -13,20 +13,15 @@ import java.util.List;
 @Repository
 public class PersonopplysningRepository implements WriteableResourceRepository<PersonopplysningResource> {
 
-    private PersonopplysningJpaRepository personopplysningJpaRepository;
+    private final PersonopplysningRestTemplate personopplysningRestTemplate;
 
-    private PersonopplysningMappingService personopplysningMappingService;
-
-    public PersonopplysningRepository(PersonopplysningJpaRepository personopplysningJpaRepository, PersonopplysningMappingService personopplysningMappingService) {
-        this.personopplysningJpaRepository = personopplysningJpaRepository;
-        this.personopplysningMappingService = personopplysningMappingService;
+    public PersonopplysningRepository(PersonopplysningRestTemplate personopplysningRestTemplate) {
+        this.personopplysningRestTemplate = personopplysningRestTemplate;
     }
 
     @Override
     public List<PersonopplysningResource> getResources() {
-        return personopplysningJpaRepository.findAll().stream()
-                .map(e -> personopplysningMappingService.toResource(e))
-                .toList();
+        return personopplysningRestTemplate.getPersonopplysningResources();
     }
 
     @Override
@@ -36,10 +31,6 @@ public class PersonopplysningRepository implements WriteableResourceRepository<P
 
     @Override
     public PersonopplysningResource saveResources(PersonopplysningResource personopplysningResource, RequestFintEvent requestFintEvent) {
-        Personopplysning personopplysning = PersonopplysningMappingService.toEntity(personopplysningResource);
-        log.info("Save personopplysning {}", personopplysningResource.getNavn());
-        personopplysningJpaRepository.save(personopplysning);
-        return personopplysningResource;
+        return null;
     }
-
 }

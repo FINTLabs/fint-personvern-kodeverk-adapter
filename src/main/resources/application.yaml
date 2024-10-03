@@ -23,9 +23,6 @@ fint:
         deltaSyncInterval: IMMEDIATE
 
 spring:
-  profiles:
-    include:
-      - db
   security:
     oauth2:
       client:
