@@ -1,10 +1,10 @@
 apiVersion: fintlabs.no/v1alpha1
 kind: Application
 metadata:
-  name: fint-personvern-kodeverk-adapter
+  name: fint-personvern-kodeverk-adapter-db
   namespace: fintlabs-no
   labels:
-    app.kubernetes.io/name: fint-personvern-kodeverk-adapter
+    app.kubernetes.io/name: fint-personvern-kodeverk-adapter-db
     app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
     app.kubernetes.io/version: latest
     app.kubernetes.io/component: adapter
