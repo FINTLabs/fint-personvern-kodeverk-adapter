@@ -4,7 +4,7 @@ fint:
     id: https://vigoiks.no/fintlabs-no/personvern/kodeverk-henrik-test
     password: ${fint.adapter.password}
     username: ${fint.adapter.username}
-    base-url: 'https://beta.felleskomponent.no'
+    base-url: https://beta.felleskomponent.no
     registration-id: fint
     org-id: fintlabs.no
     heartbeat-interval: 1
@@ -24,11 +24,9 @@ fint:
 
 spring:
   datasource:
-    hikari:
-      schema: fintlabs_no
-    url: jdbc:postgresql://localhost:5436/fint-personvern-kodeverk-adapter
+    url: jdbc:postgresql://localhost:5432/fint-personvern-kodeverk-adapter
     username: postgres
-    password: password
+    password: postgres
   security:
     oauth2:
       client:
@@ -38,7 +36,7 @@ spring:
         registration:
           fint:
             authorization-grant-type: password
-            client-id: ${fint.adapter.clientId}
+            client-id: ${fint.adapter.client-id}
             client-secret: ${fint.adapter.client-secret}
             provider: fint-idp
             scope: fint-adapter
