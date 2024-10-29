@@ -1,17 +1,17 @@
 package no.fintlabs.model.personopplysning;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 @Getter
 @Setter
-public class Personopplysning {
+public class PersonopplysningEntity {
     @Id
     @Column(nullable = false, unique = true)
     private String kode;

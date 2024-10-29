@@ -5,10 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.adapter.config.AdapterProperties;
 import no.fintlabs.adapter.events.EventPublisher;
-import no.fintlabs.adapter.models.OperationType;
-import no.fintlabs.adapter.models.RequestFintEvent;
-import no.fintlabs.adapter.models.ResponseFintEvent;
-import no.fintlabs.adapter.models.SyncPageEntry;
+import no.fintlabs.adapter.models.event.RequestFintEvent;
+import no.fintlabs.adapter.models.event.ResponseFintEvent;
+import no.fintlabs.adapter.models.sync.SyncPageEntry;
 import no.fintlabs.model.personopplysning.PersonopplysningJpaRepository;
 import no.fintlabs.model.personopplysning.PersonopplysningRepository;
 import no.fintlabs.model.personopplysning.PersonopplysningResourceValidator;
@@ -35,22 +34,22 @@ public class PersonopplysningEventPublisher extends EventPublisher<Personopplysn
 
     @Override
     protected void handleEvent(RequestFintEvent requestFintEvent, PersonopplysningResource personopplysningResource) {
-        ResponseFintEvent<PersonopplysningResource> response = createResponse(requestFintEvent);
-        response.setOperationType(OperationType.CREATE);
-        response.setValue(createSyncpageEntry(personopplysningResource));
-        if (personopplysningResourceValidator.isResourceValid(personopplysningResource)) {
-            PersonopplysningResource savedResource = repository.saveResources(response.getValue().getResource(), requestFintEvent);
+        ResponseFintEvent response = createResponse(requestFintEvent);
+        response.setOperationType(requestFintEvent.getOperationType());
+
+        try {
+            PersonopplysningResource savedResource = repository.saveResources(personopplysningResource, requestFintEvent);
             response.setValue(createSyncpageEntry(savedResource));
-            submit(response);
-        } else {
+        } catch (Exception exception) {
             response.setFailed(true);
-            response.setErrorMessage("Failed to handle event");
-            submit(response);
+            response.setErrorMessage(exception.getMessage());
+            log.error("Error in repository.saveResource", exception);
         }
-        log.info(response.getCorrId());
+
+        submit(response);
     }
 
-    private SyncPageEntry<PersonopplysningResource> createSyncpageEntry(PersonopplysningResource savedResource) {
+    private SyncPageEntry createSyncpageEntry(PersonopplysningResource savedResource) {
         return SyncPageEntry.of(savedResource.getSystemId().getIdentifikatorverdi(), savedResource);
     }
 

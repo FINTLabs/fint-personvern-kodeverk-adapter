@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.adapter.events.WriteableResourceRepository;
-import no.fintlabs.adapter.models.RequestFintEvent;
+import no.fintlabs.adapter.models.event.RequestFintEvent;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -16,12 +16,11 @@ import java.util.List;
 public class PersonopplysningRepository implements WriteableResourceRepository<PersonopplysningResource> {
 
     private final PersonopplysningJpaRepository personopplysningJpaRepository;
-    private final PersonopplysningMappingService personopplysningMappingService;
 
     @Override
     public List<PersonopplysningResource> getResources() {
         return personopplysningJpaRepository.findAll().stream()
-                .map(e -> personopplysningMappingService.toResource(e))
+                .map(PersonopplysningMappingService::toResource)
                 .toList();
     }
 
@@ -32,9 +31,9 @@ public class PersonopplysningRepository implements WriteableResourceRepository<P
 
     @Override
     public PersonopplysningResource saveResources(PersonopplysningResource personopplysningResource, RequestFintEvent requestFintEvent) {
-        Personopplysning personopplysning = PersonopplysningMappingService.toEntity(personopplysningResource);
+        PersonopplysningEntity personopplysningEntity = PersonopplysningMappingService.toEntity(personopplysningResource);
         log.info("Save personopplysning {}", personopplysningResource.getNavn());
-        personopplysningJpaRepository.save(personopplysning);
+        personopplysningJpaRepository.save(personopplysningEntity);
         return personopplysningResource;
     }
 

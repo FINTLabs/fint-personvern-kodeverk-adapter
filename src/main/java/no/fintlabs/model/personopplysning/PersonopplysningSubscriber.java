@@ -5,7 +5,7 @@ import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.adapter.config.AdapterProperties;
 import no.fintlabs.adapter.datasync.ResourceSubscriber;
 import no.fintlabs.adapter.models.AdapterCapability;
-import no.fintlabs.adapter.models.SyncPageEntry;
+import no.fintlabs.adapter.models.sync.SyncPageEntry;
 import no.fintlabs.adapter.validator.ValidatorService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,7 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class PersonopplysningSubscriber extends ResourceSubscriber<PersonopplysningResource, PersonopplysningPublisher> {
 
 
-    protected PersonopplysningSubscriber(WebClient webClient, AdapterProperties props, PersonopplysningPublisher publisher, ValidatorService<PersonopplysningResource> validatorService) {
+    protected PersonopplysningSubscriber(WebClient webClient, AdapterProperties props, PersonopplysningPublisher publisher, ValidatorService validatorService) {
         super(webClient, props, publisher, validatorService);
     }
 
@@ -25,7 +25,7 @@ public class PersonopplysningSubscriber extends ResourceSubscriber<Personopplysn
     }
 
     @Override
-    protected SyncPageEntry<PersonopplysningResource> createSyncPageEntry(PersonopplysningResource resource) {
+    protected SyncPageEntry createSyncPageEntry(PersonopplysningResource resource) {
         String identificationValue = resource.getSystemId().getIdentifikatorverdi();
         return SyncPageEntry.of(identificationValue, resource);
     }

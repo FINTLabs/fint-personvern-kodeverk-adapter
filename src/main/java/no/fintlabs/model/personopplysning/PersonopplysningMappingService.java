@@ -12,28 +12,34 @@ import java.util.UUID;
 public class PersonopplysningMappingService {
 
 
-    public static PersonopplysningResource toResource(Personopplysning personopplysning) {
+    public static PersonopplysningResource toResource(PersonopplysningEntity personopplysningEntity) {
         PersonopplysningResource personopplysningResource = new PersonopplysningResource();
         Identifikator identifikator = new Identifikator();
-        identifikator.setIdentifikatorverdi(personopplysning.getIdentifikatorVerdi());
-        personopplysningResource.setKode(personopplysning.getKode());
-        personopplysningResource.setNavn(personopplysning.getNavn());
-        personopplysningResource.setPassiv(personopplysning.isPassiv());
-        personopplysningResource.setGyldighetsperiode(mapToPeriode(personopplysning.getStartGyldighetsdato(), personopplysning.getEndGyldighetsdato(), personopplysning.getBeskrivelseGyldighetsPeriode()));
+        identifikator.setIdentifikatorverdi(personopplysningEntity.getIdentifikatorVerdi());
+        personopplysningResource.setKode(personopplysningEntity.getKode());
+        personopplysningResource.setNavn(personopplysningEntity.getNavn());
+        personopplysningResource.setPassiv(personopplysningEntity.isPassiv());
+        personopplysningResource.setGyldighetsperiode(mapToPeriode(personopplysningEntity.getStartGyldighetsdato(), personopplysningEntity.getEndGyldighetsdato(), personopplysningEntity.getBeskrivelseGyldighetsPeriode()));
         personopplysningResource.setSystemId(identifikator);
         return personopplysningResource;
     }
 
-    public static Personopplysning toEntity(PersonopplysningResource personopplysningResource) {
-        Personopplysning personopplysning = new Personopplysning();
-        personopplysning.setKode(personopplysningResource.getKode());
-        personopplysning.setStartGyldighetsdato(personopplysningResource.getGyldighetsperiode().getStart());
-        personopplysning.setEndGyldighetsdato(personopplysningResource.getGyldighetsperiode().getSlutt());
-        personopplysning.setBeskrivelseGyldighetsPeriode(personopplysningResource.getGyldighetsperiode().getBeskrivelse());
-        personopplysning.setNavn(personopplysningResource.getNavn());
-        personopplysning.setPassiv(personopplysningResource.getPassiv());
-        personopplysning.setIdentifikatorVerdi(UUID.randomUUID().toString());
-        return personopplysning;
+    public static PersonopplysningEntity toEntity(PersonopplysningResource personopplysningResource) {
+        PersonopplysningEntity personopplysningEntity = new PersonopplysningEntity();
+        personopplysningEntity.setKode(personopplysningResource.getKode());
+        if (personopplysningResource.getGyldighetsperiode() != null) {
+            if (personopplysningResource.getGyldighetsperiode().getStart() != null)
+                personopplysningEntity.setStartGyldighetsdato(personopplysningResource.getGyldighetsperiode().getStart());
+
+            if (personopplysningResource.getGyldighetsperiode().getSlutt() != null)
+                personopplysningEntity.setEndGyldighetsdato(personopplysningResource.getGyldighetsperiode().getSlutt());
+        }
+        personopplysningEntity.setBeskrivelseGyldighetsPeriode(personopplysningResource.getGyldighetsperiode().getBeskrivelse());
+        personopplysningEntity.setNavn(personopplysningResource.getNavn());
+        if (personopplysningResource.getPassiv() != null)
+            personopplysningEntity.setPassiv(personopplysningResource.getPassiv());
+        personopplysningEntity.setIdentifikatorVerdi(UUID.randomUUID().toString());
+        return personopplysningEntity;
     }
 
     private static Periode mapToPeriode(Date startDate, Date endDate, String beskrivelse) {
