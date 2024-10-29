@@ -1,5 +1,6 @@
 package no.fintlabs.model.personopplysning;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.adapter.events.WriteableResourceRepository;
@@ -11,16 +12,11 @@ import java.util.List;
 
 @Slf4j
 @Repository
+@RequiredArgsConstructor
 public class PersonopplysningRepository implements WriteableResourceRepository<PersonopplysningResource> {
 
-    private PersonopplysningJpaRepository personopplysningJpaRepository;
-
-    private PersonopplysningMappingService personopplysningMappingService;
-
-    public PersonopplysningRepository(PersonopplysningJpaRepository personopplysningJpaRepository, PersonopplysningMappingService personopplysningMappingService) {
-        this.personopplysningJpaRepository = personopplysningJpaRepository;
-        this.personopplysningMappingService = personopplysningMappingService;
-    }
+    private final PersonopplysningJpaRepository personopplysningJpaRepository;
+    private final PersonopplysningMappingService personopplysningMappingService;
 
     @Override
     public List<PersonopplysningResource> getResources() {

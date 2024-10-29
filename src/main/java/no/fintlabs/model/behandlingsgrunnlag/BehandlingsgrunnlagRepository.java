@@ -1,5 +1,6 @@
 package no.fintlabs.model.behandlingsgrunnlag;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import no.fint.model.resource.personvern.kodeverk.BehandlingsgrunnlagResource;
 import no.fintlabs.adapter.events.WriteableResourceRepository;
@@ -11,13 +12,10 @@ import java.util.List;
 
 @Slf4j
 @Repository
+@RequiredArgsConstructor
 public class BehandlingsgrunnlagRepository implements WriteableResourceRepository<BehandlingsgrunnlagResource> {
 
     private final BehandlingsgrunnlagResources behandlingsgrunnlagJpaRepository;
-
-    public BehandlingsgrunnlagRepository(BehandlingsgrunnlagResources behandlingsgrunnlagJpaRepository) {
-        this.behandlingsgrunnlagJpaRepository = behandlingsgrunnlagJpaRepository;
-    }
 
     @Override
     public List<BehandlingsgrunnlagResource> getResources() {

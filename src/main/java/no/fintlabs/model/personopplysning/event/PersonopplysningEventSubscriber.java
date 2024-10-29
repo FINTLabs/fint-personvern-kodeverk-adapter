@@ -13,7 +13,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class PersonopplysningEventSubscriber extends EventSubscriber<PersonopplysningResource, PersonopplysningEventPublisher> {
 
-
     protected PersonopplysningEventSubscriber(WebClient webClient, AdapterProperties adapterProperties, PersonopplysningEventPublisher publisher) {
         super(webClient, adapterProperties, publisher, "personopplysning");
     }
