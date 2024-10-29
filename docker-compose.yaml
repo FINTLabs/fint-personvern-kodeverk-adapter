@@ -1,25 +1,12 @@
 version: '3.7'
 services:
-  db:
-    image: postgres:14.10
-    restart: always
+  postgres:
+    image: postgres
+    container_name: my_postgres
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=fint-personvern-kodeverk-adapter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fint-personvern-kodeverk-adapter
     ports:
-      - '5432:5432'
-    volumes:
-      - ~/.db-data/:/var/lib/postgresql/data
-  pgadmin:
-    container_name: fint-personvern-kodeverk-adapter
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:80"
-volumes:
-  db:
-    driver: local
+      - "5432:5432"
+    restart: unless-stopped
