@@ -14,6 +14,9 @@ metadata:
 spec:
   orgId: fintlabs.no
   image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter-database:latest
+  env:
+    - name: fint.adapter.base-url
+      value: https://alpha.felleskomponent.no
   onePassword:
     itemPath: vaults/aks-alpha-vault/items/fint-personvern-kodeverk-adapter
   resources:
