@@ -8,6 +8,7 @@ import no.fint.model.resource.Link;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.model.personopplysning.model.PersonopplysningEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -28,11 +29,14 @@ public class PersonopplysningMappingService {
         personopplysningResource.setGyldighetsperiode(mapToPeriode(personopplysningEntity.getStartGyldighetsdato(), personopplysningEntity.getEndGyldighetsdato(), personopplysningEntity.getBeskrivelseGyldighetsPeriode()));
         personopplysningResource.setSystemId(identifikator);
 
-        try {
-            String links = personopplysningEntity.getLinks();
-            personopplysningResource.setLinks(objectMapper.readValue(links, new TypeReference<Map<String, List<Link>>>() {}));
-        } catch (Exception e) {
-            throw new RuntimeException("Could not parse links" + e.getMessage());
+        if (StringUtils.hasText(personopplysningEntity.getLinks())) {
+            try {
+                String links = personopplysningEntity.getLinks();
+                personopplysningResource.setLinks(objectMapper.readValue(links, new TypeReference<Map<String, List<Link>>>() {
+                }));
+            } catch (Exception e) {
+                throw new RuntimeException("Could not parse links: " + e.getMessage());
+            }
         }
 
         return personopplysningResource;
@@ -54,7 +58,7 @@ public class PersonopplysningMappingService {
             personopplysningEntity.setPassiv(personopplysningResource.getPassiv());
         personopplysningEntity.setIdentifikatorVerdi(personopplysningResource.getSystemId().getIdentifikatorverdi());
 
-        if(personopplysningResource.getLinks() != null || !personopplysningResource.getLinks().isEmpty()) {
+        if (personopplysningResource.getLinks() != null && !personopplysningResource.getLinks().isEmpty()) {
             try {
                 Map<String, List<Link>> links = personopplysningResource.getLinks();
                 personopplysningEntity.setLinks(objectMapper.writeValueAsString(links));
