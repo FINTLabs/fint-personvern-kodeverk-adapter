@@ -1,4 +1,4 @@
-package no.fintlabs.model.personopplysning;
+package no.fintlabs.model.personopplysning.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -14,6 +16,8 @@ import java.util.Date;
 public class PersonopplysningEntity {
     @Id
     @Column(nullable = false, unique = true)
+    private String identifikatorVerdi;
+
     private String kode;
 
     private Date startGyldighetsdato;
@@ -27,9 +31,10 @@ public class PersonopplysningEntity {
 
     private boolean passiv;
 
-    private String identifikatorVerdi;
-
     private Date startIdentifikatorDato;
 
     private Date endIdentifikatorDato;
+
+    @Column(nullable = false)
+    private String links;
 }
