@@ -32,8 +32,10 @@ public class PersonopplysningMappingService {
 
             if (personopplysningResource.getGyldighetsperiode().getSlutt() != null)
                 personopplysningEntity.setEndGyldighetsdato(personopplysningResource.getGyldighetsperiode().getSlutt());
+
+            personopplysningEntity.setBeskrivelseGyldighetsPeriode(personopplysningResource.getGyldighetsperiode().getBeskrivelse());
         }
-        personopplysningEntity.setBeskrivelseGyldighetsPeriode(personopplysningResource.getGyldighetsperiode().getBeskrivelse());
+
         personopplysningEntity.setNavn(personopplysningResource.getNavn());
         if (personopplysningResource.getPassiv() != null)
             personopplysningEntity.setPassiv(personopplysningResource.getPassiv());
