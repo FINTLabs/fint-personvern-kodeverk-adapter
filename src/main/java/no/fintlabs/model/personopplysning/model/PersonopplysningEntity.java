@@ -34,7 +34,4 @@ public class PersonopplysningEntity {
     private Date startIdentifikatorDato;
 
     private Date endIdentifikatorDato;
-
-    @Column(nullable = false)
-    private String links;
 }

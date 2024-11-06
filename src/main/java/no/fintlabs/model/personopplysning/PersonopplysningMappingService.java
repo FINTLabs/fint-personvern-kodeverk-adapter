@@ -1,23 +1,15 @@
 package no.fintlabs.model.personopplysning;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
 import no.fint.model.felles.kompleksedatatyper.Periode;
-import no.fint.model.resource.Link;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.model.personopplysning.model.PersonopplysningEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class PersonopplysningMappingService {
-
-    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static PersonopplysningResource toResource(PersonopplysningEntity personopplysningEntity) {
         PersonopplysningResource personopplysningResource = new PersonopplysningResource();
@@ -28,17 +20,6 @@ public class PersonopplysningMappingService {
         personopplysningResource.setPassiv(personopplysningEntity.isPassiv());
         personopplysningResource.setGyldighetsperiode(mapToPeriode(personopplysningEntity.getStartGyldighetsdato(), personopplysningEntity.getEndGyldighetsdato(), personopplysningEntity.getBeskrivelseGyldighetsPeriode()));
         personopplysningResource.setSystemId(identifikator);
-
-        if (StringUtils.hasText(personopplysningEntity.getLinks())) {
-            try {
-                String links = personopplysningEntity.getLinks();
-                personopplysningResource.setLinks(objectMapper.readValue(links, new TypeReference<Map<String, List<Link>>>() {
-                }));
-            } catch (Exception e) {
-                throw new RuntimeException("Could not parse links: " + e.getMessage());
-            }
-        }
-
         return personopplysningResource;
     }
 
@@ -58,14 +39,6 @@ public class PersonopplysningMappingService {
             personopplysningEntity.setPassiv(personopplysningResource.getPassiv());
         personopplysningEntity.setIdentifikatorVerdi(personopplysningResource.getSystemId().getIdentifikatorverdi());
 
-        if (personopplysningResource.getLinks() != null && !personopplysningResource.getLinks().isEmpty()) {
-            try {
-                Map<String, List<Link>> links = personopplysningResource.getLinks();
-                personopplysningEntity.setLinks(objectMapper.writeValueAsString(links));
-            } catch (Exception e) {
-                throw new RuntimeException("Could not serialize personopplysning links", e);
-            }
-        }
         return personopplysningEntity;
     }
 
