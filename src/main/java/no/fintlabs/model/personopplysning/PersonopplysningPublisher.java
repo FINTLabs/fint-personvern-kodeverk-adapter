@@ -1,5 +1,6 @@
 package no.fintlabs.model.personopplysning;
 
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.adapter.config.AdapterProperties;
@@ -21,6 +22,7 @@ public class PersonopplysningPublisher extends ResourcePublisher<Personopplysnin
 
     @Override
     @Scheduled(initialDelayString = "10000", fixedRateString = "500000")
+    @PostConstruct
     public void doFullSync() {
         log.info("Start full sync for resource {}", getCapability().getEntityUri());
         submit(SyncData.ofPostData(repository.getResources()));

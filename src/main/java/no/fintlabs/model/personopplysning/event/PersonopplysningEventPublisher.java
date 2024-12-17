@@ -10,7 +10,6 @@ import no.fintlabs.adapter.models.event.ResponseFintEvent;
 import no.fintlabs.adapter.models.sync.SyncPageEntry;
 import no.fintlabs.model.personopplysning.PersonopplysningJpaRepository;
 import no.fintlabs.model.personopplysning.PersonopplysningRepository;
-import no.fintlabs.model.personopplysning.PersonopplysningResourceValidator;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -19,11 +18,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class PersonopplysningEventPublisher extends EventPublisher<PersonopplysningResource> {
 
-    private final PersonopplysningResourceValidator personopplysningResourceValidator;
 
-    protected PersonopplysningEventPublisher(WebClient webClient, AdapterProperties adapterProperties, PersonopplysningRepository repository, ObjectMapper objectMapper, PersonopplysningResourceValidator personopplysningResourceValidator, PersonopplysningJpaRepository personopplysningJpaRepository) {
+    protected PersonopplysningEventPublisher(WebClient webClient, AdapterProperties adapterProperties, PersonopplysningRepository repository, ObjectMapper objectMapper, PersonopplysningJpaRepository personopplysningJpaRepository) {
         super("personopplysning", PersonopplysningResource.class, webClient, adapterProperties, repository, objectMapper);
-        this.personopplysningResourceValidator = personopplysningResourceValidator;
     }
 
     @Override

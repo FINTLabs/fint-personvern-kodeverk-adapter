@@ -19,6 +19,7 @@ import java.util.List;
 public class PersonopplysningRepository implements WriteableResourceRepository<PersonopplysningResource> {
 
     private final PersonopplysningJpaRepository personopplysningJpaRepository;
+    private final PersonopplysningRestTemplate personopplysningRestTemplate;
 
     @Override
     public List<PersonopplysningResource> getResources() {
@@ -43,4 +44,5 @@ public class PersonopplysningRepository implements WriteableResourceRepository<P
         personopplysningJpaRepository.save(personopplysningEntity);
         return personopplysningResource;
     }
+
 }

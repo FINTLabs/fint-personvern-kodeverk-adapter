@@ -36,9 +36,7 @@ jobs:
         id: meta
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=sha,enable=true,priority=100,prefix=sha-,suffix=,format=short
-            latest
+          tags: type=sha,enable=true,priority=100,prefix=shaF-,suffix=,format=short
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -63,9 +61,15 @@ jobs:
 #          - viken-no
 #          - visma-com
         cluster:
+<<<<<<< HEAD
 #          - aks-api-fint-2022-02-08
           - aks-beta-fint-2021-11-23
           - aks-alpha-fint-2021-11-18
+=======
+#          - aks-alpha-fint-2021-11-18
+          - aks-beta-fint-2021-11-23
+          - aks-api-fint-2022-02-08
+>>>>>>> main
 #          - aks-pwf-fint-2021-10-20
 
     steps:
