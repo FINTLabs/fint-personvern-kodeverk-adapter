@@ -33,7 +33,7 @@ public class PersonopplysningEventPublisher extends EventPublisher<Personopplysn
     }
 
     @Override
-    protected void handleEvent(RequestFintEvent requestFintEvent, PersonopplysningResource personopplysningResource) {
+    public void handleEvent(RequestFintEvent requestFintEvent, PersonopplysningResource personopplysningResource) {
         ResponseFintEvent response = createResponse(requestFintEvent);
         response.setOperationType(requestFintEvent.getOperationType());
 

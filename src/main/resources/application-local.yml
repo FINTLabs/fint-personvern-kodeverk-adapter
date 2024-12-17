@@ -1,5 +1,9 @@
 fint:
   metamodell: https://beta.felleskomponent.no/fint/metamodell/klasse
+  database:
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5436/fint-personvern-kodeverk-adapter
   adapter:
     id: https://vigoiks.no/fintlabs-no/personvern/kodeverk-henrik-test
     password: ${fint.adapter.password}
@@ -24,9 +28,9 @@ fint:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/fint-personvern-kodeverk-adapter
+    url: jdbc:postgresql://localhost:5436/fint-personvern-kodeverk-adapter
     username: postgres
-    password: postgres
+    password: password
   security:
     oauth2:
       client:
