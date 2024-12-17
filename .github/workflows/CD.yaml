@@ -1,15 +1,12 @@
 name: CD
 
 on:
-#  repository_dispatch:
-#    types: [trigger-cd]
-  push:
-    branches:
-      - november
+  repository_dispatch:
+    types: [trigger-cd]
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-database
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -69,7 +66,6 @@ jobs:
 #          - aks-alpha-fint-2021-11-18
           - aks-beta-fint-2021-11-23
           - aks-api-fint-2022-02-08
->>>>>>> main
 #          - aks-pwf-fint-2021-10-20
 
     steps:
