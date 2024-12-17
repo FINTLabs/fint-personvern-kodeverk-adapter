@@ -1,8 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: fintlabs-no
 resources:
   - ../../../base
+<<<<<<< HEAD
+patches:
+  - path: flais.yaml
+
+=======
 patchesStrategicMerge:
   - config-map.yaml
   - one-password.yaml
@@ -14,3 +18,4 @@ commonLabels:
   app.kubernetes.io/part-of: fint-core
   fintlabs.no/team: core
   fintlabs.no/org-id: fintlabs.no
+>>>>>>> main
