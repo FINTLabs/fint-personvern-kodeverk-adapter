@@ -4,6 +4,7 @@ namespace: fintlabs-no
 resources:
   - ../../../base
 patchesStrategicMerge:
+  - flais.yaml
   - config-map.yaml
   - one-password.yaml
 commonLabels:
