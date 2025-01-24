@@ -1,28 +1,25 @@
 apiVersion: fintlabs.no/v1alpha1
 kind: Application
 metadata:
+  labels:
+    app.kubernetes.io/component: adapter
+    app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
+    app.kubernetes.io/name: fint-personvern-kodeverk-adapter
+    app.kubernetes.io/part-of: fint-core
+    app.kubernetes.io/version: latest
+    fintlabs.no/org-id: fintlabs.no
+    fintlabs.no/team: core
   name: fint-personvern-kodeverk-adapter
   namespace: fintlabs-no
-  labels:
-    app.kubernetes.io/name: fint-personvern-kodeverk-adapter
-    app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
-    app.kubernetes.io/version: latest
-    app.kubernetes.io/component: adapter
-    app.kubernetes.io/part-of: fint-core
-    fintlabs.no/team: core
-    fintlabs.no/org-id: fintlabs.no
 spec:
   orgId: fintlabs.no
-  image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter-database:latest
+  port: 8080
+  database:
+    database: fint-core
+    enabled: true
   env:
     - name: fint.adapter.base-url
       value: https://beta.felleskomponent.no
+  image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter-database:latest
   onePassword:
     itemPath: vaults/aks-beta-vault/items/fint-personvern-kodeverk-adapter
-  resources:
-    limits:
-      memory: 512Mi
-      cpu: 500m
-    requests:
-      memory: 256Mi
-      cpu: 250m
