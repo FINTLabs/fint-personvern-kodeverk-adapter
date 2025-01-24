@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: fint-personvern-kodeverk-adapter
-data:
-  fint.adapter.base-url: 'https://api.felleskomponent.no'

@@ -1,0 +1,25 @@
+apiVersion: fintlabs.no/v1alpha1
+kind: Application
+metadata:
+  labels:
+    app.kubernetes.io/component: adapter
+    app.kubernetes.io/instance: fint-personvern-kodeverk-adapter_fintlabs_no
+    app.kubernetes.io/name: fint-personvern-kodeverk-adapter
+    app.kubernetes.io/part-of: fint-core
+    app.kubernetes.io/version: latest
+    fintlabs.no/org-id: fintlabs.no
+    fintlabs.no/team: core
+  name: fint-personvern-kodeverk-adapter
+  namespace: fintlabs-no
+spec:
+  orgId: fintlabs.no
+  port: 8080
+  database:
+    database: fint-core
+    enabled: true
+  env:
+    - name: fint.adapter.base-url
+      value: https://beta.felleskomponent.no
+  image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter-database:latest
+  onePassword:
+    itemPath: vaults/aks-beta-vault/items/fint-personvern-kodeverk-adapter
