@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '3.2.0'
+    id 'org.springframework.boot' version '3.3.3'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
     id 'groovy'
@@ -7,9 +7,9 @@ plugins {
 
 group = 'no.fintlabs'
 version = '0.0.1-SNAPSHOT'
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -47,12 +47,15 @@ dependencies {
     implementation 'no.fintlabs:fint-metamodell-model-java:1.1.0'
 
     runtimeOnly 'org.springframework.boot:spring-boot-actuator'
-    runtimeOnly 'org.spockframework:spock-spring:2.1-groovy-3.0'
+    runtimeOnly 'org.spockframework:spock-spring:2.3-groovy-4.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testImplementation 'org.testcontainers:junit-jupiter:1.19.7'
+    testImplementation 'org.testcontainers:postgresql:1.19.7'
 }
 
 test {
