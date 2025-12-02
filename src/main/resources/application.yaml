@@ -36,3 +36,6 @@ spring:
             client-secret:
             provider: fint-idp
             scope: 'fint-adapter'
+  profiles:
+    active: db
+
