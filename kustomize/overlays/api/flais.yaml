@@ -20,6 +20,6 @@ spec:
   env:
     - name: fint.adapter.base-url
       value: https://api.felleskomponent.no
-  image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter-database:latest
+  image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter:sha-0000000
   onePassword:
     itemPath: vaults/aks-api-vault/items/fint-personvern-kodeverk-adapter
