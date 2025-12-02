@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: fintlabs-no
 resources:
   - flais.yaml
+  - postgres.yaml
