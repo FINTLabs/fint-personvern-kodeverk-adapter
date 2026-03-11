@@ -1,8 +1,8 @@
 package no.fintlabs.model.personopplysning;
 
-import no.fint.model.felles.kompleksedatatyper.Identifikator;
-import no.fint.model.felles.kompleksedatatyper.Periode;
-import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
+import no.novari.fint.model.felles.kompleksedatatyper.Identifikator;
+import no.novari.fint.model.felles.kompleksedatatyper.Periode;
+import no.novari.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.model.personopplysning.model.PersonopplysningEntity;
 import org.springframework.stereotype.Service;
 
