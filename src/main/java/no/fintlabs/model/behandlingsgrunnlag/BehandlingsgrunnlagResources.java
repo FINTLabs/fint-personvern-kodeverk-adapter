@@ -1,9 +1,9 @@
 package no.fintlabs.model.behandlingsgrunnlag;
 
 import lombok.extern.slf4j.Slf4j;
-import no.fint.model.felles.kompleksedatatyper.Identifikator;
-import no.fint.model.felles.kompleksedatatyper.Periode;
-import no.fint.model.resource.personvern.kodeverk.BehandlingsgrunnlagResource;
+import no.novari.fint.model.felles.kompleksedatatyper.Identifikator;
+import no.novari.fint.model.felles.kompleksedatatyper.Periode;
+import no.novari.fint.model.resource.personvern.kodeverk.BehandlingsgrunnlagResource;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;

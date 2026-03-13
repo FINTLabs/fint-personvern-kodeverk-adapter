@@ -2,7 +2,7 @@ package no.fintlabs.model.behandlingsgrunnlag;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import no.fint.model.resource.personvern.kodeverk.BehandlingsgrunnlagResource;
+import no.novari.fint.model.resource.personvern.kodeverk.BehandlingsgrunnlagResource;
 import no.fintlabs.adapter.config.AdapterProperties;
 import no.fintlabs.adapter.datasync.ResourcePublisher;
 import no.fintlabs.adapter.datasync.ResourceRepository;

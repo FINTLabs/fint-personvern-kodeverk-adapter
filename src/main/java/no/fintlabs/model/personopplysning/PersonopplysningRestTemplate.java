@@ -1,13 +1,11 @@
 package no.fintlabs.model.personopplysning;
 
 import lombok.extern.slf4j.Slf4j;
-import no.fint.event.model.Event;
-import no.fint.model.felles.kompleksedatatyper.Identifikator;
 import no.fint.model.metamodell.kompleksedatatyper.Attributt;
-import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.metamodell.KlasseResource;
 import no.fint.model.resource.metamodell.KlasseResources;
-import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
+import no.novari.fint.model.felles.kompleksedatatyper.Identifikator;
+import no.novari.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
