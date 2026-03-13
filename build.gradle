@@ -43,7 +43,7 @@ dependencies {
     implementation 'no.fint:fint-event-model:3.3.1'
     implementation 'no.novari:fint-model-resource:1.0.1'
     implementation 'no.novari:fint-model-core:1.0.0'
-    implementation 'no.fintlabs:fint-metamodell-model-java:2.0.0-rc-1'
+    implementation 'no.fintlabs:fint-metamodell-model-java:2.0.0-rc-2'
 
     implementation 'org.postgresql:postgresql'
 
