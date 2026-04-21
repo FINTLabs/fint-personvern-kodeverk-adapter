@@ -106,10 +106,6 @@ jobs:
           script: return 'rg-aks-${{ steps.environment.outputs.result }}'
           result-encoding: string
 
-      - name: Update image tag
-        run: |
-          sed -i "s|image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter:.*|image: ${{ needs.build-and-push.outputs.tags }}|" kustomize/overlays/api/flais.yaml
-
       - name: Bake manifests with Kustomize
         id: bake
         uses: azure/k8s-bake@v4
@@ -140,8 +136,9 @@ jobs:
           fi
 
       - name: Deploy
-        uses: azure/k8s-deploy@v6
+        uses: azure/k8s-deploy@v5.0.3 # Because of bug in 5.0.4, we specify 5.0.3
         with:
           action: deploy
           manifests: ${{ steps.bake.outputs.manifestsBundle }}
+          images: ${{ needs.build-and-push.outputs.tags }}
           namespace: ${{ matrix.org }}
