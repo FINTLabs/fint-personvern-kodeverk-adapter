@@ -108,7 +108,7 @@ jobs:
 
       - name: Update image tag
         run: |
-          sed -i "s|image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter:.*|image: ${{ needs.build-and-push.outputs.tags }}|" kustomize/api/flais.yaml
+          sed -i "s|image: ghcr.io/fintlabs/fint-personvern-kodeverk-adapter:.*|image: ${{ needs.build-and-push.outputs.tags }}|" kustomize/overlays/api/flais.yaml
 
       - name: Bake manifests with Kustomize
         id: bake
