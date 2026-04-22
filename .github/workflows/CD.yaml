@@ -146,6 +146,5 @@ jobs:
         uses: azure/k8s-deploy@v6
         with:
           action: deploy
-          manifests: ${{ steps.bake.outputs.manifestsBundle }}
-          images: ${{ needs.build-and-push.outputs.tags }}
+          manifests: ${{ steps.substitute.outputs.manifests }}
           namespace: ${{ matrix.org }}
