@@ -2,7 +2,7 @@ package no.fintlabs.model.personopplysning;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import no.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
+import no.novari.fint.model.resource.personvern.kodeverk.PersonopplysningResource;
 import no.fintlabs.NotInDataBaseException;
 import no.fintlabs.adapter.events.WriteableResourceRepository;
 import no.fintlabs.adapter.models.event.RequestFintEvent;
