@@ -1,6 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '3.3.3'
-    id 'io.spring.dependency-management' version '1.1.0'
+    id 'io.spring.dependency-management' version '1.1.7'
     id 'java'
     id 'groovy'
 }
@@ -48,15 +48,15 @@ dependencies {
     implementation 'org.postgresql:postgresql'
 
     runtimeOnly 'org.springframework.boot:spring-boot-actuator'
-    runtimeOnly 'org.spockframework:spock-spring:2.3-groovy-4.0'
+    runtimeOnly 'org.spockframework:spock-spring:2.5-groovy-4.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'
+    testImplementation 'org.spockframework:spock-core:2.5-groovy-4.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    testImplementation 'org.testcontainers:junit-jupiter:1.19.7'
-    testImplementation 'org.testcontainers:postgresql:1.19.7'
+    testImplementation 'org.testcontainers:junit-jupiter:1.21.4'
+    testImplementation 'org.testcontainers:postgresql:1.21.4'
 }
 
 test {
